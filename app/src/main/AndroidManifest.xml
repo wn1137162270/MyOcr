@@ -30,7 +30,6 @@
         <activity android:name=".activity.MainActivity" />
         <activity android:name=".activity.RegisterActivity" />
         <activity android:name=".activity.PhoneLoginActivity" />
-        <activity android:name=".activity.MeFragmentActivity" />
         <activity android:name=".activity.UpdatePasswordActivity" />
         <activity
             android:name="com.tencent.tauth.AuthActivity"
