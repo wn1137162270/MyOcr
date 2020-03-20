@@ -5,15 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="myapp.lenovo.viewpager.activity.LoginActivity"
-    android:background="@color/colorBackgroundDarkBlue">
+    android:background="@color/colorPrimaryLight">
 
     <ImageView
         android:id="@+id/logo_iv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="70dp"
-        android:layout_marginLeft="130dp"
-        android:background="@drawable/logo"/>
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/logo"/>
 
     <LinearLayout
         android:id="@+id/login_layout"
@@ -28,7 +28,7 @@
             android:layout_width="290dp"
             android:layout_height="45dp"
             android:textColor="@color/colorBlack"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:hint="用户名/手机/邮箱"
             android:textColorHint="@color/colorDarkGray"
             android:background="@drawable/login_background"/>
@@ -40,7 +40,7 @@
             android:layout_marginTop="5dp"
             android:hint="密码"
             android:textColor="@color/colorBlack"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:textColorHint="@color/colorDarkGray"
             android:inputType="textPassword"
             android:background="@drawable/login_background"/>

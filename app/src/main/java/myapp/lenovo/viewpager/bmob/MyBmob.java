@@ -16,6 +16,7 @@ import com.tencent.tauth.UiError;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import cn.bmob.v3.Bmob;
 import cn.bmob.v3.BmobConfig;
 import cn.bmob.v3.BmobSMS;
 import cn.bmob.v3.BmobUser;
@@ -43,11 +44,11 @@ public class MyBmob {
     private static Tencent tencent;
 
     public static void initBmob(Context context){
-        cn.bmob.v3.Bmob.initialize(context,"167be2b330d3485eaad70348455b3853");
+        Bmob.initialize(context,"167be2b330d3485eaad70348455b3853");
         BmobConfig bmobConfig=new BmobConfig.Builder(context)
                 .setApplicationId("167be2b330d3485eaad70348455b3853")
                 .build();
-        cn.bmob.v3.Bmob.initialize(bmobConfig);
+        Bmob.initialize(bmobConfig);
     }
 
     public static void registerBmobUserWithEmail(String username, String email, String password, final OperateDoneListener listener){
@@ -67,7 +68,7 @@ public class MyBmob {
                 else{
                     errorCode = e.getErrorCode();
                 }
-                listener.onoperateDone(errorCode, REGISTER);
+                listener.onOperateDone(errorCode, REGISTER);
             }
         });
     }
@@ -78,7 +79,7 @@ public class MyBmob {
             @Override
             public void done(MyUser o, BmobException e) {
                 isSucceed[0] = (e == null);
-                listener.onoperateDone(isSucceed[0] ? 1 : 0, LOGIN_BY_ACCOUNT);
+                listener.onOperateDone(isSucceed[0] ? 1 : 0, LOGIN_BY_ACCOUNT);
             }
         });
     }
@@ -88,7 +89,7 @@ public class MyBmob {
             @Override
             public void done(Integer integer, BmobException e) {
                 boolean isSucceed = (e == null);
-                listener.onoperateDone(isSucceed ? 1 : 0, REQUEST_LOGIN_PHONESMS);
+                listener.onOperateDone(isSucceed ? 1 : 0, REQUEST_LOGIN_PHONESMS);
             }
         });
     }
@@ -98,7 +99,7 @@ public class MyBmob {
             @Override
             public void done(MyUser bmobUser, BmobException e) {
                 boolean isSucceed = (e == null);
-                listener.onoperateDone(isSucceed ? 1 : 0, LOGIN_BY_PHONESMS);
+                listener.onOperateDone(isSucceed ? 1 : 0, LOGIN_BY_PHONESMS);
             }
         });
     }
@@ -125,7 +126,7 @@ public class MyBmob {
                             @Override
                             public void done(JSONObject jsonObject, BmobException e) {
                                 boolean isSucceed = (e == null);
-                                listener.onoperateDone(isSucceed ? 1 : 0, LOGIN_BY_QQ);
+                                listener.onOperateDone(isSucceed ? 1 : 0, LOGIN_BY_QQ);
                             }
                         });
                     } catch (JSONException e) {
@@ -164,7 +165,7 @@ public class MyBmob {
 
 
     public interface OperateDoneListener{
-        void onoperateDone(int errorCode, int which);
+        void onOperateDone(int errorCode, int which);
     }
 
 }

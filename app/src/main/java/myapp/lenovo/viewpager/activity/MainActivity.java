@@ -4,9 +4,6 @@ import android.content.res.ColorStateList;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
-//import androidx.core.app.Fragment;
-//import androidx.core.view.ViewPager;
-//import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -17,7 +14,6 @@ import androidx.viewpager.widget.ViewPager;
 
 import java.util.ArrayList;
 import java.util.List;
-//import java.util.List;
 
 import cn.bmob.v3.BmobUser;
 import myapp.lenovo.viewpager.fragment.MyDocumentFragment;
@@ -46,11 +42,11 @@ public class MainActivity extends AppCompatActivity implements MyOcrFragment.Ocr
     }
 
     private void initView(){
-        viewPager= (ViewPager) findViewById(R.id.view_pager);
-        radioGroup= (RadioGroup) findViewById(R.id.radio_group);
-        ocr= (RadioButton) findViewById(R.id.ocr_rb);
-        document= (RadioButton) findViewById(R.id.document_rb);
-        me= (RadioButton) findViewById(R.id.me_rb);
+        viewPager= findViewById(R.id.view_pager);
+        radioGroup= findViewById(R.id.radio_group);
+        ocr= findViewById(R.id.ocr_rb);
+        document= findViewById(R.id.document_rb);
+        me= findViewById(R.id.me_rb);
 
         csls[0]=MainActivity.this.getResources().getColorStateList(R.color.colorDarkGray);
         csls[1]=MainActivity.this.getResources().getColorStateList(R.color.colorDarkBlue);

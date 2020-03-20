@@ -17,12 +17,8 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.provider.MediaStore;
-//import android.support.annotation.NonNull;
-//import android.support.design.widget.CollapsingToolbarLayout;
-//import android.support.design.widget.FloatingActionButton;
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
-//import androidx.core.app.Fragment;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
@@ -139,18 +135,11 @@ public class MyOcrFragment extends Fragment {
     }
 
     private void init(View view){
-//        Toolbar toolbar= (Toolbar) view.findViewById(R.id.tool_bar);
-//        getActivity().setSupportActionBar(toolbar);
-//        ActionBar actionBar=getSupportActionBar();
-//        if(actionBar!=null){
-//            actionBar.setTitle("文本识别");
-//            actionBar.setDisplayHomeAsUpEnabled(false);
-//        }
-        ctl= (CollapsingToolbarLayout) view.findViewById(R.id.collapsing_toolbar_layout);
-        recognize = (FloatingActionButton) view.findViewById(R.id.floating_action_button);
-        originalPictureLayout = (LinearLayout) view.findViewById(R.id.original_picture_ll);
-        originalPicture = (ImageView) view.findViewById(R.id.original_picture_iv);
-        recognizeResult = (TextView) view.findViewById(R.id.recognize_result_tv);
+        ctl= view.findViewById(R.id.collapsing_toolbar_layout);
+        recognize = view.findViewById(R.id.floating_action_button);
+        originalPictureLayout = view.findViewById(R.id.original_picture_ll);
+        originalPicture = view.findViewById(R.id.original_picture_iv);
+        recognizeResult = view.findViewById(R.id.recognize_result_tv);
 
         ctl.setTitle("点击上传照片");
         ctl.setOnClickListener(new View.OnClickListener() {
@@ -208,13 +197,6 @@ public class MyOcrFragment extends Fragment {
 
     public interface OcrContent{
         void getOcrContent(Uri uri,String html);
-    }
-
-    public class MyThread extends Thread{
-        @Override
-        public void run() {
-            super.run();
-        }
     }
 
 }

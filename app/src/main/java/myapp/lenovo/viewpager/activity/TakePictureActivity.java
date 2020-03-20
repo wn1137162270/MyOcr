@@ -15,7 +15,6 @@ import android.hardware.SensorManager;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
-//import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.util.Log;
@@ -119,18 +118,18 @@ public class TakePictureActivity extends AppCompatActivity implements CameraPrev
     }
 
     private void init(){
-        cameraPreview = (CameraPreview) findViewById(R.id.camera_preview);
-        focusView = (FocusView) findViewById(R.id.focus_view);
-        hint = (TextView) findViewById(R.id.hint_tv);
-        takePictureLayout = (RelativeLayout) findViewById(R.id.take_picture_layout);
-        album = (Button) findViewById(R.id.album_btn);
-        shutter = (ImageButton) findViewById(R.id.shutter_ib);
-        close = (ImageButton) findViewById(R.id.close_ib);
+        cameraPreview = findViewById(R.id.camera_preview);
+        focusView = findViewById(R.id.focus_view);
+        hint = findViewById(R.id.hint_tv);
+        takePictureLayout = findViewById(R.id.take_picture_layout);
+        album = findViewById(R.id.album_btn);
+        shutter = findViewById(R.id.shutter_ib);
+        close = findViewById(R.id.close_ib);
 
-        cropImageView = (CropImageView) findViewById(R.id.crop_iv);
-        cropLayout = (LinearLayout) findViewById(R.id.crop_layout);
-        closeCrop = (ImageButton) findViewById(R.id.close_crop_ib);
-        confirmCrop = (ImageButton) findViewById(R.id.confirm_crop_ib);
+        cropImageView = findViewById(R.id.crop_iv);
+        cropLayout = findViewById(R.id.crop_layout);
+        closeCrop = findViewById(R.id.close_crop_ib);
+        confirmCrop = findViewById(R.id.confirm_crop_ib);
 
         album.setOnClickListener(onClickListener);
         shutter.setOnClickListener(onClickListener);
@@ -236,7 +235,6 @@ public class TakePictureActivity extends AppCompatActivity implements CameraPrev
     private void showCropLayout(){
         takePictureLayout.setVisibility(View.GONE);
         cropLayout.setVisibility(View.VISIBLE);
-        //code
     }
 
     private void showTakePictureLayout(){
@@ -275,7 +273,7 @@ public class TakePictureActivity extends AppCompatActivity implements CameraPrev
         values.put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg");
         values.put(MediaStore.Images.Media.DATA, filePath);
         Uri uri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
-        Log.e(TAG, time + "--" +fileName + "--" +String.valueOf(uri));
+        Log.e(TAG, time + "--" +fileName + "--" +uri);
         return uri;
     }
 }

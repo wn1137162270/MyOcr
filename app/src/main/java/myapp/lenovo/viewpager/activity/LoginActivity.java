@@ -12,9 +12,6 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.tencent.tauth.IUiListener;
-import com.tencent.tauth.Tencent;
-
 import cn.bmob.v3.BmobUser;
 
 import myapp.lenovo.viewpager.bmob.MyBmob;
@@ -32,11 +29,6 @@ public class LoginActivity extends Activity implements MyBmob.OperateDoneListene
     private TextView phoneEntry;
     private ImageButton qqLogin;
     private ImageButton weiboLogin;
-    private IUiListener iUiListener;
-
-    public static final String qqAppId ="1105782685";
-    public static final String qqAppKey="mhA6fkRdBN5K5PW0";
-    public static Tencent tencent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,16 +43,16 @@ public class LoginActivity extends Activity implements MyBmob.OperateDoneListene
     }
 
     public void initView(){
-        curAccount= (EditText) findViewById(R.id.account_et);
-        curPassword= (EditText) findViewById(R.id.password_et);
-        entry= (Button) findViewById(R.id.entry_btn);
-        forgetPassword= (TextView) findViewById(R.id.forget_password_tv);
-        register= (TextView) findViewById(R.id.register_tv);
-        phoneEntry= (TextView) findViewById(R.id.phone_entry_tv);
+        curAccount= findViewById(R.id.account_et);
+        curPassword= findViewById(R.id.password_et);
+        entry= findViewById(R.id.entry_btn);
+        forgetPassword= findViewById(R.id.forget_password_tv);
+        register=  findViewById(R.id.register_tv);
+        phoneEntry= findViewById(R.id.phone_entry_tv);
         phoneEntry.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
         phoneEntry.getPaint().setAntiAlias(true);
-        qqLogin= (ImageButton) findViewById(R.id.qq_logo_iv);
-        weiboLogin= (ImageButton) findViewById(R.id.weibo_logo_iv);
+        qqLogin= findViewById(R.id.qq_logo_iv);
+        weiboLogin= findViewById(R.id.weibo_logo_iv);
         entry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -104,41 +96,6 @@ public class LoginActivity extends Activity implements MyBmob.OperateDoneListene
         });
     }
 
-//    public void initBmob(){
-//        Bmob.initialize(LoginActivity.this,"167be2b330d3485eaad70348455b3853");
-//        BmobConfig bmobConfig=new BmobConfig.Builder(LoginActivity.this)
-//                .setApplicationId("167be2b330d3485eaad70348455b3853")
-//                .build();
-//        Bmob.initialize(bmobConfig);
-//    }
-
-//    public void loginBmobUserWithEmail(String data,String password){
-//        final MyUser bmobUser=new MyUser();
-//        bmobUser.setUsername(data);
-//        bmobUser.setPassword(password);
-//        bmobUser.login(new SaveListener<MyUser>() {
-//            @Override
-//            public void done(MyUser myUser, BmobException e) {
-////                if(e==null){
-////                    Log.d("login success1",myUser.toString());
-////                    Toast.makeText(LoginActivity.this,"登录成功",Toast.LENGTH_SHORT).show();
-////                    Intent intent=new Intent(LoginActivity.this,MainActivity.class);
-////                    startActivity(intent);
-////                    finish();
-////                }
-////                else{
-////                    Log.d("login fail0",e.toString());
-////                    Toast.makeText(LoginActivity.this,"登录失败，请重新输入",Toast.LENGTH_SHORT).show();
-////                    curAccount.setText("");
-////                    curPassword.setText("");
-////                }
-//                Toast.makeText(LoginActivity.this,"登录成功",Toast.LENGTH_SHORT).show();
-//                Intent intent=new Intent(LoginActivity.this,MainActivity.class);
-//                startActivity(intent);
-//                finish();
-//            }
-//        });
-//    }
 
     public void autoLoginCacheUser(){
         MyUser bmobUser=BmobUser.getCurrentUser(MyUser.class);
@@ -149,65 +106,6 @@ public class LoginActivity extends Activity implements MyBmob.OperateDoneListene
         }
     }
 
-//    public void bmobThirdLoginByQQ(){
-//        iUiListener=new IUiListener() {
-//            @Override
-//            public void onComplete(Object o) {
-//                if (o != null) {
-//                    JSONObject jsonObject = (JSONObject) o;
-//                    try {
-//                        String accessToken = jsonObject.getString(com.tencent.
-//                                connect.common.Constants.PARAM_ACCESS_TOKEN);
-//                        String expires = jsonObject.getString(com.tencent.
-//                                connect.common.Constants.PARAM_EXPIRES_IN);
-//                        String openId = jsonObject.getString(com.tencent.
-//                                connect.common.Constants.PARAM_OPEN_ID);
-//                        Log.d("accessToken", accessToken);
-//                        Log.d("expires", expires);
-//                        Log.d("openId", openId);
-//                        BmobUser.BmobThirdUserAuth authInfo = new BmobUser.BmobThirdUserAuth(BmobUser.
-//                                BmobThirdUserAuth.SNS_TYPE_QQ, accessToken, expires, openId);
-//                        BmobUser.loginWithAuthData(authInfo, new LogInListener<JSONObject>() {
-//
-//                            @Override
-//                            public void done(JSONObject jsonObject, BmobException e) {
-//                                if (e == null) {
-//                                    Toast.makeText(LoginActivity.this, "QQ登录成功",
-//                                            Toast.LENGTH_SHORT).show();
-//                                    Log.d("login", "qq login success");
-//                                    Intent intent=new Intent(LoginActivity.this,MainActivity.class);
-//                                    startActivity(intent);
-//                                    finish();
-//                                } else {
-//                                    Toast.makeText(LoginActivity.this, "QQ登录失败",
-//                                            Toast.LENGTH_SHORT).show();
-//                                    Log.d("login", "qq login fail");
-//                                }
-//                            }
-//                        });
-//                    } catch (JSONException e) {
-//                        e.printStackTrace();
-//                    }
-//                }
-//            }
-//            @Override
-//            public void onError(UiError uiError) {
-//                Toast.makeText(LoginActivity.this,"QQ登录出错"+uiError.errorCode+uiError.errorDetail,
-//                        Toast.LENGTH_SHORT).show();
-//            }
-//
-//            @Override
-//            public void onCancel() {
-//                Toast.makeText(LoginActivity.this,"取消QQ绑定",Toast.LENGTH_SHORT).show();
-//            }
-//        };
-//
-//        if(tencent==null){
-//            tencent=Tencent.createInstance(qqAppId,getApplicationContext());
-//        }
-//        tencent.logout(LoginActivity.this);
-//        tencent.login(LoginActivity.this,"all", iUiListener);
-//    }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         MyBmob.handleActivityResult(requestCode,resultCode,data);
@@ -215,7 +113,7 @@ public class LoginActivity extends Activity implements MyBmob.OperateDoneListene
     }
 
     @Override
-    public void onoperateDone(int errorCode, int which) {
+    public void onOperateDone(int errorCode, int which) {
         if (which == MyBmob.LOGIN_BY_ACCOUNT){
             if (errorCode > 0){
                 Log.d(TAG,"login success1");

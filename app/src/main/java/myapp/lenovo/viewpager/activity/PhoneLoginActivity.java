@@ -43,12 +43,12 @@ public class  PhoneLoginActivity extends Activity implements MyBmob.OperateDoneL
     }
 
     public void initView(){
-        logPhone= (EditText) findViewById(R.id.phone_et);
-        logPhoneSMS= (EditText) findViewById(R.id.phone_sms_et);
-        logBack= (ImageButton) findViewById(R.id.phone_back_ib);
-        logExit= (TextView) findViewById(R.id.exit_tv);
-        requestPhoneSMS= (Button) findViewById(R.id.request_sms_btn);
-        entryPhone= (Button) findViewById(R.id.register_entry_btn);
+        logPhone= findViewById(R.id.phone_et);
+        logPhoneSMS= findViewById(R.id.phone_sms_et);
+        logBack= findViewById(R.id.phone_back_ib);
+        logExit= findViewById(R.id.exit_tv);
+        requestPhoneSMS= findViewById(R.id.request_sms_btn);
+        entryPhone= findViewById(R.id.register_entry_btn);
         logPhone.setHint("手机");
         logPhoneSMS.setHint("验证码");
         logBack.setOnClickListener(new View.OnClickListener() {
@@ -147,7 +147,7 @@ public class  PhoneLoginActivity extends Activity implements MyBmob.OperateDoneL
     }
 
     @Override
-    public void onoperateDone(int errorCode, int which) {
+    public void onOperateDone(int errorCode, int which) {
         if (which == MyBmob.REQUEST_LOGIN_PHONESMS){
             if(errorCode > 0){
                 Log.d(TAG,"request succeed");

@@ -47,12 +47,12 @@ public class RegisterActivity extends Activity implements MyBmob.OperateDoneList
     }
 
     public void initView(){
-        regAccount= (EditText) findViewById(R.id.account_et);
-        regEmail= (EditText) findViewById(R.id.email_et);
-        regPassword= (EditText) findViewById(R.id.password_et);
-        regBack= (ImageButton) findViewById(R.id.register_back_ib);
-        regExit= (TextView) findViewById(R.id.exit_tv);
-        register= (Button) findViewById(R.id.register_btn);
+        regAccount= findViewById(R.id.account_et);
+        regEmail= findViewById(R.id.email_et);
+        regPassword= findViewById(R.id.password_et);
+        regBack= findViewById(R.id.register_back_ib);
+        regExit= findViewById(R.id.exit_tv);
+        register= findViewById(R.id.register_btn);
         regAccount.setHint("用户名");
         regEmail.setHint("邮箱（可不填）");
         regPassword.setHint("密码");
@@ -88,7 +88,7 @@ public class RegisterActivity extends Activity implements MyBmob.OperateDoneList
     }
 
     @Override
-    public void onoperateDone(int errorCode, int which) {
+    public void onOperateDone(int errorCode, int which) {
         if (which == MyBmob.REGISTER){
             if(errorCode == -1){
                 Log.d(TAG, "create success");
@@ -121,55 +121,4 @@ public class RegisterActivity extends Activity implements MyBmob.OperateDoneList
         }
     }
 
-//    public void createBombUserWithEmail(String username,String email,String password){
-//        MyUser bmobUser=new MyUser();
-//        bmobUser.setUsername(username);
-//        bmobUser.setPassword(password);
-//        if(email!=null&& !TextUtils.isEmpty(email)){
-//            bmobUser.setEmail(email);
-//        }
-//        //bmobUser.setGroupName(groupName);
-//        bmobUser.signUp(new SaveListener<MyUser>() {
-//            @Override
-//            public void done(MyUser myUser, BmobException e) {
-//                if(e==null){
-//                    Log.d("create success",myUser.toString());
-//                    Toast.makeText(RegisterActivity.this,"注册成功",Toast.LENGTH_SHORT).show();
-//                    if(myUser!=null){
-//                        BmobUser.logOut();
-//                    }
-//                    Intent intent=new Intent(RegisterActivity.this,LoginActivity.class);
-//                    startActivity(intent);
-//                    finish();
-//                }
-//                else{
-//                    Log.d("create fail",e.toString());
-//                    if(e.getErrorCode()==202){
-//                        Toast.makeText(RegisterActivity.this,"该用户名已注册，请重新输入",Toast.LENGTH_SHORT).show();
-//                        regAccount.setText(null);
-//                        regEmail.setText(null);
-//                        regPassword.setText(null);
-//                    }
-//                    else if(e.getErrorCode()==203){
-//                        Toast.makeText(RegisterActivity.this,"该邮箱已注册，请重新输入",Toast.LENGTH_SHORT).show();
-//                        regAccount.setText(null);
-//                        regEmail.setText(null);
-//                        regPassword.setText(null);
-//                    }
-//                    else if(e.getErrorCode()==301){
-//                        Toast.makeText(RegisterActivity.this,"邮箱输入有误，请重新输入",Toast.LENGTH_SHORT).show();
-//                        regAccount.setText(null);
-//                        regEmail.setText(null);
-//                        regPassword.setText(null);
-//                    }
-//                    else if(e.getErrorCode()==304){
-//                        Toast.makeText(RegisterActivity.this,"用户名或密码不能为空，请重新输入",Toast.LENGTH_SHORT).show();
-//                        regAccount.setText(null);
-//                        regEmail.setText(null);
-//                        regPassword.setText(null);
-//                    }
-//                }
-//            }
-//        });
-//    }
 }

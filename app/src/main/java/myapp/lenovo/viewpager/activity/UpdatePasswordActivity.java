@@ -108,19 +108,19 @@ public class UpdatePasswordActivity extends Activity {
     }
 
     public void initView(){
-        firstWord= (EditText) findViewById(R.id.first_et);
-        secondWord= (EditText) findViewById(R.id.second_et);
-        thirdWord= (EditText) findViewById(R.id.third_et);
-        firstImage= (ImageView) findViewById(R.id.first_iv);
-        secondImage= (ImageView) findViewById(R.id.second_iv);
-        thirdImage= (ImageView) findViewById(R.id.third_iv);
-        requestPhoneSMS= (Button) findViewById(R.id.request_sms_btn);
-        secondLayout= (LinearLayout) findViewById(R.id.second_layout);
-        thirdLayout= (LinearLayout) findViewById(R.id.third_layout);
-        updateBack= (ImageButton) findViewById(R.id.update_password_back_ib);
-        updateExit= (TextView) findViewById(R.id.exit_tv);
-        confirm= (Button) findViewById(R.id.confirm_btn);
-        title= (TextView) findViewById(R.id.title_tv);
+        firstWord= findViewById(R.id.first_et);
+        secondWord= findViewById(R.id.second_et);
+        thirdWord= findViewById(R.id.third_et);
+        firstImage= findViewById(R.id.first_iv);
+        secondImage= findViewById(R.id.second_iv);
+        thirdImage= findViewById(R.id.third_iv);
+        requestPhoneSMS= findViewById(R.id.request_sms_btn);
+        secondLayout= findViewById(R.id.second_layout);
+        thirdLayout= findViewById(R.id.third_layout);
+        updateBack= findViewById(R.id.update_password_back_ib);
+        updateExit= findViewById(R.id.exit_tv);
+        confirm= findViewById(R.id.confirm_btn);
+        title= findViewById(R.id.title_tv);
         updateBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
